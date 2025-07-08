@@ -1,0 +1,151 @@
+.page.page2 {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(8, 12.5vh);
+  background-color: transparent;
+}
+
+.page2-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/images/universe.png');
+  background-size: 100% 100%;
+  background-repeat: repeat; 
+  background-position: 0 0;
+  animation: moveBackground 10s linear infinite; 
+  z-index: -1;
+}
+
+
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px; 
+  }
+}
+
+
+.header {
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  font-family: 'UranusPixel', monospace;
+  font-size: clamp(80px, 15vw, 160px);
+  color: white;
+  text-shadow: 2px 2px 0 black;
+  margin: 0;
+}
+
+
+.main-frame {
+  grid-row: 2 / span 3;
+  width: 80vw;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(203, 167, 249, 0.5); /* 淡紫半透明 */
+  border-radius: 16px;
+  padding: 3vh 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+.top-frame {
+  flex: 1;
+  background-image: url('/images/backgroundframe.png');
+  background-size: cover;
+  background-position: center;
+  padding: 2vh 2vw;
+  display: flex;
+  align-items: center;        
+  justify-content: center;    
+  text-align: center;        
+  font-family: 'UranusPixel', monospace;
+  font-size: clamp(20px, 4vw, 40px);
+  color: white;
+  text-shadow: 1px 1px 0 black;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+.top-text {
+  font-size: clamp(24px, 5vw, 48px);
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+
+.bottom-frame {
+    position: relative;
+    overflow: visible;
+  grid-row: 7;
+  justify-self: center;    
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6vw;
+  cursor: pointer;
+  height: 10vh;                
+  max-height: 12.5vh;
+  padding: 0.6vh 1.5vw;
+  background-image: url('/images/backgroundframe.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+
+  font-family: 'UranusPixel', monospace;
+  font-size: clamp(18px, 4vw, 36px);
+  color: white;
+  text-shadow: 1px 1px 0 black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  width: fit-content;         
+  max-width: 80vw;            
+  min-width: 180px;           
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.bottom-frame:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* 淡淡高亮 */
+  transform: translateY(-2px);                 /* 稍微浮起来 */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* 多加一点亮光感 */
+}
+
+
+.ycy-icon {
+  width: clamp(50px, 7vw, 70px);
+  position: absolute;
+  top: -50%;
+  left: -10px;
+  z-index: 2;
+
+  animation: shake-rotate 10s ease-in-out infinite;
+  animation-delay: 2s;
+  transform-origin: center bottom;
+}
+
+@keyframes shake-rotate {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-10deg); }
+  40%  { transform: rotate(20deg); }
+  60%  { transform: rotate(-20deg); }
+  80%  { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+
+
+.send-icon {
+  width: clamp(20px, 4vw, 36px);
+  height: auto;
+}

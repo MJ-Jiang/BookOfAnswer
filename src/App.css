@@ -1,0 +1,21 @@
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+@font-face {
+  font-family: 'UranusPixel';
+  src: url('/fonts/Uranus_Pixel_11Px.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.pixel-font {
+  font-family: 'UranusPixel', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+

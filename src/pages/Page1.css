@@ -1,0 +1,108 @@
+.page1 {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-rows: repeat(8, 12.5vh);
+  height:100%;
+}
+.page1-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/images/universe.png');
+  background-size: 100% 100%;
+  background-repeat: repeat; 
+  background-position: 0 0;
+  animation: moveBackground 3s linear infinite; 
+  z-index: -1;
+}
+
+
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px; 
+  }
+}
+.title-box {
+  grid-row: 2 / span 2;
+  justify-self: center;
+  align-self: center;
+  padding: 5vh 5vw;
+  background-image: url('/images/backgroundframe.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  width: 80vw;
+  max-width: 500px;
+}
+
+.title-box h1 {
+  font-size: clamp(28px, 8vw, 60px);
+  line-height: 1.6;             
+  color: #393629;                 
+  text-shadow: 1px 1px 0 white; 
+  margin: 0;
+}
+
+.title-box h2 {
+  font-size: clamp(20px, 6vw, 42px);
+  margin-top: 1.5vh;
+  line-height: 1.6;
+  color: #393629;                 
+  text-shadow: 1px 1px 0 white; 
+}
+
+
+.spaceship {
+  grid-row: 6 / 8;
+  justify-self: center;
+  align-self: start;
+  width: 80vw;
+  max-width: 300px;
+  transform: translateY(-30%); 
+  cursor: pointer;
+}
+
+
+.star {
+  position: absolute; 
+  z-index: 1;
+  animation: rotateStar 3s linear infinite;
+}
+@keyframes rotateStar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
+}
+
+.star1 {
+  bottom: 10%;
+  right: 5%;
+  width: clamp(30px, 6vw, 80px); 
+ 
+}
+
+.star2 {
+  top: 5%;
+  left: 15%;
+  width: clamp(50px, 7vw, 100px);
+}
+.star3 {
+  top: 40%;
+  right: 3%;
+  width: clamp(60px, 8vw, 120px);
+}
