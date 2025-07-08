@@ -107,7 +107,10 @@
   font-size: clamp(18px, 4vw, 36px);
   color: white;
   text-shadow: 1px 1px 0 black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 2px 0 #aaa,
+    0 4px 0 #888,
+    0 6px 0 #666;
 
   width: fit-content;         
   max-width: 80vw;            
@@ -116,8 +119,9 @@
 }
 .bottom-frame:hover {
   background-color: rgba(255, 255, 255, 0.15); /* 淡淡高亮 */
-  transform: translateY(-2px);                 /* 稍微浮起来 */
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* 多加一点亮光感 */
+  transform: translateY(-4px);                 /* 稍微浮起来 */
+  box-shadow:  0 4px 8px rgba(255, 255, 255, 0.2),
+    0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
 
@@ -125,26 +129,10 @@
   width: clamp(50px, 7vw, 70px);
   position: absolute;
   top: -50%;
-  left: -10px;
+  left: -1px;
   z-index: 2;
 
-  animation: shake-rotate 10s ease-in-out infinite;
-  animation-delay: 2s;
-  transform-origin: center bottom;
 }
-
-@keyframes shake-rotate {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(-10deg); }
-  40%  { transform: rotate(20deg); }
-  60%  { transform: rotate(-20deg); }
-  80%  { transform: rotate(20deg); }
-  100% { transform: rotate(0deg); }
-}
-
-
-
-
 .send-icon {
   width: clamp(20px, 4vw, 36px);
   height: auto;

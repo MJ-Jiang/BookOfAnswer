@@ -210,5 +210,29 @@ html, body, #root {
 }
 
 .mode-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);                 /* 稍微浮起来 */
+  box-shadow:  0 4px 8px rgba(255, 255, 255, 0.2),
+    0 8px 16px rgba(255, 255, 255, 0.1);
+}
+/* 取消浮动动画 */
+@media (hover: none) {
+  .mode-button {
+    animation: pulseGlow 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 2px 0 #aaa,
+      0 4px 0 #888,
+      0 6px 0 #666;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow:
+      0 2px 2px #fff,
+      0 4px 6px #fdf3a1;
+  }
 }
