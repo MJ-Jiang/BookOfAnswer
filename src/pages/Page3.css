@@ -69,31 +69,40 @@
   box-sizing: border-box;
 }
 .page3 .dialog-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-/* === avatar styles === */
-.page3 .avatar-icon {
-  position: absolute;
-  top: 2vh;
-  left: 2vw;
-  width: clamp(50px, 14vw, 80px);
-  height: clamp(50px, 14vw, 80px);
-  border-radius: 50%;
-  border: 3px solid white;
-  object-fit: cover;
-  box-shadow: 0 0 6px rgba(0,0,0,0.3);
-}
+
 
 /* === text area === */
 .page3 .top-text {
   font-size: clamp(20px, 4.2vw, 34px);
   line-height: 1.6;
   text-align: left;
-  word-break: break-word;
   margin: 0;
-  padding-top: 0.5vh;
+  padding-bottom: 2vh;
+}
+.page3 .footer-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1vw;
+  padding-top: 1vh;
+}
+.page3 .source-text {
+  font-size: clamp(16px, 3vw, 24px);
+  color: #5a5240;
+  text-align: right;
+  white-space: nowrap;
+}
+.page3 .avatar-inline {
+  width: clamp(36px, 9vw, 60px);
+  height: clamp(36px, 9vw, 60px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
 
 /* === audio box === */
