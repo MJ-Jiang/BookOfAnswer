@@ -21,7 +21,7 @@ const Page2 =() =>{
               <div className="bottom-frame" onClick={()=> navigate("/page3")}>
                     <img src="/images/ycy.png" alt="ycy" className="ycy-icon" />
                     <p>超越对你说</p>
-                    <img src="/images/send.png" alt="send" className="send-icon" />
+                
                 </div>
         </div>
     )

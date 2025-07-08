@@ -192,7 +192,7 @@ html, body, #root {
   padding: 0.8vh 2vw;
   font-family: 'UranusPixel', monospace;
   font-size: clamp(14px, 3.5vw, 24px);
-  color: #333;
+  color: #393629;
   background: #fdf3a1;
   border: 2px solid #aaa;
   border-radius: 8px;

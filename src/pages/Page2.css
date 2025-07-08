@@ -16,10 +16,9 @@
   background-size: 100% 100%;
   background-repeat: repeat; 
   background-position: 0 0;
-  animation: moveBackground 10s linear infinite; 
+  animation: moveBackground 15s linear infinite; 
   z-index: -1;
 }
-
 
 @keyframes moveBackground {
   from {
@@ -29,7 +28,6 @@
     background-position: 100px 100px; 
   }
 }
-
 
 .header {
   grid-row: 1;
@@ -42,13 +40,12 @@
   margin: 0;
 }
 
-
 .main-frame {
   grid-row: 2 / span 3;
   width: 80vw;
   max-width: 600px;
   margin: 0 auto;
-  background-color: rgba(203, 167, 249, 0.5); /* 淡紫半透明 */
+  background-color: rgba(203, 167, 249, 0.5);
   border-radius: 16px;
   padding: 3vh 4vw;
   display: flex;
@@ -56,7 +53,6 @@
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-
 
 .top-frame {
   flex: 1;
@@ -71,10 +67,11 @@
   font-family: 'UranusPixel', monospace;
   font-size: clamp(20px, 4vw, 40px);
   color: white;
-  text-shadow: 1px 1px 0 black;
+  text-shadow: 1px 1px 0 #393629;
   border-radius: 12px;
   box-sizing: border-box;
 }
+
 .top-text {
   font-size: clamp(24px, 5vw, 48px);
   line-height: 1.6;
@@ -82,58 +79,105 @@
   text-align: center;
 }
 
-
 .bottom-frame {
-    position: relative;
-    overflow: visible;
+  position: relative;
+  overflow: visible;
   grid-row: 7;
   justify-self: center;    
   align-self: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.6vw;
   cursor: pointer;
-  height: 10vh;                
-  max-height: 12.5vh;
-  padding: 0.6vh 1.5vw;
-  background-image: url('/images/backgroundframe.png');
+  height: clamp(48px, 8vh, 64px);
+  padding: 0.3vh 0.8vw;
+  background: #fdf3a1;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
-
+  border-radius: 12px;
+  border: 2px solid #aaa;
   font-family: 'UranusPixel', monospace;
-  font-size: clamp(18px, 4vw, 36px);
-  color: white;
-  text-shadow: 1px 1px 0 black;
+  font-size: clamp(16px, 4vw, 26px);
+  color: #393629;
+  text-shadow: 1px 1px 0 white;
   box-shadow:
     0 2px 0 #aaa,
     0 4px 0 #888,
     0 6px 0 #666;
-
   width: fit-content;         
-  max-width: 80vw;            
-  min-width: 180px;           
-  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  max-width: 65vw;            
+  min-width: 140px;           
+  transition: transform 0.1s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
+
 .bottom-frame:hover {
-  background-color: rgba(255, 255, 255, 0.15); /* 淡淡高亮 */
-  transform: translateY(-4px);                 /* 稍微浮起来 */
+
+  transform: translateY(-4px);
   box-shadow:  0 4px 8px rgba(255, 255, 255, 0.2),
     0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
+@media (hover: none) {
+  .bottom-frame {
+    animation: pulseGlow 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 2px 0 #aaa,
+      0 4px 0 #888,
+      0 6px 0 #666;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow:
+      0 2px 2px #fff,
+      0 4px 6px #fdf3a1;
+  }
+}
 
 .ycy-icon {
-  width: clamp(50px, 7vw, 70px);
+  width: clamp(40px, 7vw, 50px);
   position: absolute;
   top: -50%;
   left: -1px;
   z-index: 2;
+  pointer-events: none;
+  transition: transform 0.2s ease;
 
 }
-.send-icon {
-  width: clamp(20px, 4vw, 36px);
-  height: auto;
+
+
+.bottom-frame:hover .ycy-icon {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+  .bottom-frame {
+    padding: 0.2vh 0.6vw;
+    font-size: clamp(14px, 5vw, 22px);
+    min-width: 120px;
+    max-width: 90vw;
+  }
+
+  .ycy-icon {
+    width: clamp(28px, 8vw, 40px);
+    top: -42%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .bottom-frame {
+    padding: 0.4vh 1.2vw;
+    font-size: clamp(18px, 2vw, 26px);
+  }
+
+  .ycy-icon {
+    width: clamp(24px, 4vw, 36px);
+    top: -48%;
+  }
 }
