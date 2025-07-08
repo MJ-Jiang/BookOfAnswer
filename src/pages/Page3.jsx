@@ -1,23 +1,67 @@
-const Page3 =() =>{
-    return(
-        <div className="page page3">
-            {/* Background of universe */}
-            <div className="background universe"></div>
+import './Page3.css';
+import { useNavigate } from 'react-router-dom';
+import { useMemo, useRef } from 'react';
+import dialogues from '../assets/dialogues.json';
 
-            <h1 className="header">答案之书</h1>
-            <div className="main-frame">
-                <div className="top-answer">谢谢</div>
-                <div className="audio-box">
-                    <audio controls src="audio/001.mp3"/>
-                </div>
-                <div className="again-box">再问一次
+const Page3 = () => {
+  const navigate = useNavigate();
 
-                </div>
+  // 上一次使用的 index
+  const previousIndex = useRef(-1);
 
-            </div>
+  // 抽一个不重复的 index
+  const randomDialogue = useMemo(() => {
+    let index;
+    do {
+      index = Math.floor(Math.random() * dialogues.length);
+    } while (index === previousIndex.current);
+    previousIndex.current = index;
+    return dialogues[index];
+  }, []);
 
+  const hideAudio =
+    Number(randomDialogue.id) >= 67 && Number(randomDialogue.id) <= 72;
+
+  return (
+    <div className="page page3">
+      {/* Background of universe */}
+      <div className="page3-bg"></div>
+
+      <h1 className="header pixel-font">答案之书</h1>
+
+      <div className="main-frame">
+        <div className="top-frame">
+          <img
+            src="/images/avatar.png"
+            alt="ycy"
+            className="avatar-icon"
+          />
+          <div className="dialog-content">
+            <p className="top-text">
+              {randomDialogue.content}
+              <br />
+              <span className="source-text">--{randomDialogue.source}</span>
+            </p>
+
+            {!hideAudio && (
+              <div className="audio-box">
+                <audio controls src={`/audio/${randomDialogue.id}.mp4`} />
+              </div>
+            )}
+          </div>
         </div>
-    )
+      </div>
 
-}
+      <div className="mode-buttons">
+        <div className="mode-button" onClick={() => navigate("/page2")}>
+          再问一次
+        </div>
+        <div className="mode-button" onClick={() => navigate("/")}>
+          回到首页
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default Page3;
