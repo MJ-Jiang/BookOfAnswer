@@ -1,6 +1,7 @@
+
 .page.page4 {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -19,7 +20,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-image: url('/images/universe.png');
   background-size: cover;
   background-position: center;
@@ -27,7 +28,6 @@
   animation: moveBackground 15s linear infinite;
   z-index: 0;
 }
-
 
 .header-bar {
   position: fixed;
@@ -41,8 +41,9 @@
   gap: 2vw;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
-  z-index: 2;
+  z-index: 3;
 }
+
 .chat-avatar {
   width: clamp(30px, 8vw, 50px);
   height: clamp(30px, 8vw, 50px);
@@ -56,6 +57,7 @@
   color: white;
   font-weight: bold;
 }
+
 .back-icon {
   width: clamp(24px, 6vw, 36px);
   height: clamp(24px, 6vw, 36px);
@@ -66,17 +68,18 @@
 
 .chat-frame {
   position: absolute;
-  top: calc(8vh + env(safe-area-inset-top)); 
+  top: calc(7vh + env(safe-area-inset-top));
   bottom: calc(10vh + env(safe-area-inset-bottom));
   left: 0;
   right: 0;
   overflow-y: auto;
-  padding: 2vh 4vw; 
+  padding: 2vh 4vw;
   display: flex;
   flex-direction: column;
   gap: 2vh;
   box-sizing: border-box;
   z-index: 2;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chat-bubble {
@@ -100,7 +103,7 @@
 }
 
 .bubble-content {
-  max-width: 80vw; 
+  max-width: 80vw;
   padding: 1vh 2vw;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -117,7 +120,7 @@
 .chat-bubble.right .bubble-content {
   background-color: #d7f9d7;
   color: #111;
-  align-items: flex-end; 
+  align-items: flex-end;
   text-align: right;
 }
 
@@ -156,8 +159,26 @@
   margin-top: 1vh;
   width: 80%;
   max-width: 220px;
-  height: 28px;
   align-self: flex-start;
+}
+
+.bubble-audio audio {
+  display: block;
+  width: 100%;
+  height: 28px;
+  object-fit: contain;
+}
+
+.bubble-audio audio::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+
+.bubble-audio audio::-webkit-media-controls-download-button {
+  display: none !important;
+}
+
+.bubble-audio audio::-webkit-media-controls-play-button {
+  height: 28px;
 }
 
 .input-bar {
@@ -179,7 +200,7 @@
   border-radius: 999px;
   border: 1px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 0.5vh 1vw;
+  padding: 0.5vh 2vw;
   gap: 2vw;
 }
 
@@ -190,7 +211,7 @@
   border: none;
   outline: none;
   background: transparent;
-  padding: 0.8vh 0;
+  padding: 0.8vh 1vw;
   color: #333;
 }
 
@@ -225,4 +246,45 @@
   .send-button {
     font-size: 18px;
   }
+}
+/* 修复 iOS 键盘收起后页面布局问题 */
+/* 基础样式保持不变，新增以下优化 */
+
+/* iOS专属修复 */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page.page4 {
+    min-height: 100%;
+  }
+}
+
+/* 增强滚动性能 */
+.chat-frame {
+  scroll-behavior: smooth;
+  transform: translateZ(0); /* 触发硬件加速 */
+}
+
+/* 键盘弹出时的响应式调整 */
+@media (max-height: 500px) {
+  .input-bar {
+    padding-bottom: calc(2vh + env(safe-area-inset-bottom));
+  }
+  .chat-frame {
+    bottom: calc(12vh + env(safe-area-inset-bottom));
+  }
+}
+
+/* 防止快速点击导致的布局问题 */
+.send-button {
+  user-select: none;
+  touch-action: manipulation;
 }

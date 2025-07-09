@@ -3,18 +3,36 @@
 */ 
 .page1 {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;/* Prevent background scrolling;*/ 
+  height: 100dvh;
+  overflow: hidden;
   position: relative;
-  padding-top: env(safe-area-inset-top);
+  padding-top: 0;
+  box-sizing: border-box;
+}
+@supports (padding-top: env(safe-area-inset-top)) {
+  .page1 {
+    padding-top: env(safe-area-inset-top);
+  }
 }
 
 .page1-bg {
+  position: fixed;
   top: 0;
-  left: 0; /* Place the background at the top left corner (0,0) of .page1.*/ 
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-image: url('/images/universe.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  animation: moveBackground 3s linear infinite;
+  z-index: -1;
 }
 
-
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
 
 .grid-layout {
   display: grid;

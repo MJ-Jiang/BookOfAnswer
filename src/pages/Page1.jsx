@@ -6,7 +6,7 @@ const Page1=() =>{
     const navigate = useNavigate();
     return (
         <div className="page1">
-            <div className="page1-bg bg-animated bg-speed-fast"></div>
+            <div className="page1-bg"></div>
             <div className="grid-layout">
                 <div className="title-box pixel-font">
                     <h1>答案之书</h1>

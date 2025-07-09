@@ -1,7 +1,7 @@
 
 .page.page3 {
   width: 100vw;
-  min-height: 100vh;
+  height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
@@ -11,12 +11,20 @@
   background-image: url('/images/universe.png'); 
   background-size: cover;
   background-repeat: repeat;
-  background-attachment: fixed; 
   font-family: 'UranusPixel', monospace;
   padding: 5vh 0 10vh;
   animation: moveBackground 15s linear infinite;
+  padding-top: 0;
 }
-
+@supports (padding-top: env(safe-area-inset-top)) {
+  .page.page3 {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
 
 
 .header {

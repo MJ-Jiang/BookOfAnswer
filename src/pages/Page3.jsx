@@ -19,7 +19,6 @@ const Page3 = () => {
   return (
     <div className="page page3">
       {/* Background of universe */}
-      <div className=" bg-speed-slow"></div>
       <h1 className="header pixel-font">答案之书</h1>
       <div className="main-frame">
         <div className="top-frame">
@@ -36,7 +35,7 @@ const Page3 = () => {
 
             {!hideAudio && (
             <div className="audio-box">
-                <audio controls src={`/audio/${randomDialogue.id}.mp4`} />
+                <audio controls controlsList="nodownload" src={`/audio/${randomDialogue.id}.mp4`} />
             </div>
             )}
           </div>
