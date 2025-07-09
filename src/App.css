@@ -6,6 +6,12 @@ html, body, #root {
   font-size: 16px;
   box-sizing: border-box;
 }
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
 
 @font-face {
   font-family: 'UranusPixel';
@@ -19,4 +25,88 @@ html, body, #root {
   letter-spacing: 1px;
 }
 
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
 
+.bg-animated {
+  background-image: url('/images/universe.png');
+  background-size: cover;
+  background-repeat: repeat;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.bg-speed-fast {
+  animation: moveBackground 3s linear infinite;
+}
+
+.bg-speed-slow {
+  animation: moveBackground 15s linear infinite;
+}
+
+
+.mode-buttons {
+  position: absolute;
+  bottom: max(4vh, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4vw;
+  z-index: 5;
+  padding-bottom: 1vh;
+}
+
+.mode-button {
+  position: relative;
+  padding: 0.8vh 2vw;
+  font-family: 'UranusPixel', monospace;
+  font-size: clamp(14px, 3.5vw, 24px);
+  color: #393629;
+  background: #fdf3a1;
+  border: 2px solid #aaa;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  box-shadow:
+    0 2px 0 #aaa,
+    0 4px 0 #888,
+    0 6px 0 #666;
+  transition: transform 0.1s ease;
+  min-width: 100px;
+  max-width: 180px;
+}
+
+.mode-button:hover {
+  transform: translateY(-4px);                
+  box-shadow:  0 4px 8px rgba(255, 255, 255, 0.2),
+    0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: none) {
+  .mode-button {
+    animation: pulseGlow 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 2px 0 #aaa,
+      0 4px 0 #888,
+      0 6px 0 #666;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow:
+      0 2px 2px #fff,
+      0 4px 6px #fdf3a1;
+  }
+}

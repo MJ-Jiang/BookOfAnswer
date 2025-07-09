@@ -6,19 +6,14 @@ const Page1=() =>{
     const navigate = useNavigate();
     return (
         <div className="page1">
-            <div className="page1-bg"></div>
-
+            <div className="page1-bg bg-animated bg-speed-fast"></div>
             <div className="grid-layout">
                 <div className="title-box pixel-font">
                     <h1>答案之书</h1>
                     <h2>向杨而生，超越一切</h2>
                 </div>
-
                 <img
-                    src="/images/spaceship.png"
-                    alt="spaceship"
-                    className="spaceship"
-                    onClick={() => navigate("/page2")}
+                    src="/images/spaceship.png" alt="spaceship" className="spaceship" onClick={() => navigate("/page2")}
                     />
                 </div>
 

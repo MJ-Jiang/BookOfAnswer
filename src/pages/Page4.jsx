@@ -7,20 +7,23 @@ const Page4 = () => {
   const navigate = useNavigate();
   const chatEndRef = useRef(null);
   const [messages, setMessages] = useState([
-    { from: 'system', text: '你有什么问题吗？' }
+    { from: 'system', text: '我在。' }
   ]);
   const [input, setInput] = useState('');
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
+/*Define a function called scrollToBottom to automatically scroll the page to the bottom.*/
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
+  /*When the message variable (usually the chat history) changes, execute scrollToBottom() once.
+*/
   const handleSend = () => {
     const trimmed = input.trim();
+    /*    Remove all spaces, line breaks, tabs, and other "whitespace characters" at the beginning and end of a string
+*/
     if (!trimmed) return;
 
     const userMsg = { from: 'user', text: trimmed };
@@ -45,14 +48,13 @@ const Page4 = () => {
     <div className="page page4">
       <div className="page4-bg"></div>
 
-      {/* 顶部栏 */}
       <div className="header-bar">
-        <span className="back-icon" onClick={() => navigate("/")}>←</span>
+        <img src="/images/back.png" alt="back" className="back-icon" onClick={() => navigate("/")}/>
         <img src="/images/avatar.png" className="chat-avatar" alt="小羊头像" />
         <span className="chat-name">小羊</span>
       </div>
 
-      {/* 聊天记录区 */}
+
       <div className="chat-frame">
         {messages.map((msg, index) => (
           <div
@@ -78,20 +80,22 @@ const Page4 = () => {
         <div ref={chatEndRef} />
       </div>
 
-      {/* 输入栏 */}
       <div className="input-bar">
-        <input
-          type="text"
-          className="chat-input"
-          placeholder="请输入..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleSend();
-          }}
-        />
+          <div className="input-container">
+            <input
+               type="text"
+                className="chat-input"
+              placeholder="请输入..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+              if (e.key === 'Enter') handleSend();
+            }}
+            />
         <button className="send-button" onClick={handleSend}>发送</button>
       </div>
+      </div>
+
     </div>
   );
 };

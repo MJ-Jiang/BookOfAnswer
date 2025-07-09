@@ -6,25 +6,11 @@
   display: grid;
   grid-template-rows: repeat(8, 12.5vh);
   background-color: transparent;
-  font-family: 'UranusPixel', monospace;
 }
-
 .page2-bg {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/images/universe.png');
-  background-size: cover;
-  background-repeat: repeat;
-  animation: moveBackground 15s linear infinite;
-  z-index: -1;
+   top: 0;
+  left: 0;
 }
-
-@keyframes moveBackground {
-  from { background-position: 0 0; }
-  to { background-position: 100px 100px; }
-}
-
 .header {
   grid-row: 1;
   justify-self: center;
@@ -37,10 +23,9 @@
 
 .main-frame {
   grid-row: 2 / span 3;
-  width: 85vw;
-  max-width: 620px;
+  width: 90vw;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 3vh 4vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,6 +34,10 @@
   background-clip: padding-box;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
+  border-radius: 16px;
+  padding: 1vh 3vw;
+  gap: 1vh;
+  box-sizing: border-box;
 }
 
 .top-frame {
@@ -61,7 +50,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(20px, 4vw, 36px);
+  font-size: clamp(24px, 4vw, 36px);
   color: #393629;
   text-shadow: 1px 1px 0 white;
   border-radius: 12px;
@@ -70,7 +59,7 @@
 }
 
 .top-text {
-  font-size: clamp(22px, 5vw, 44px);
+  font-size: clamp(24px, 5vw, 48px);
   line-height: 1.5;
   margin: 0;
   text-align: center;
@@ -135,7 +124,7 @@
 }
 
 .ycy-icon {
-  width: clamp(36px, 6vw, 48px);
+  width: clamp(32px, 6vw, 36px);
   position: absolute;
   top: -50%;
   left: -1px;
@@ -151,7 +140,7 @@
 @media (max-width: 600px) {
   .bottom-frame {
     padding: 0.2vh 0.6vw;
-    font-size: clamp(14px, 5vw, 20px);
+    font-size: clamp(28px, 5vw, 36px);
     min-width: 120px;
     max-width: 90vw;
   }
@@ -165,7 +154,7 @@
 @media (min-width: 1000px) {
   .bottom-frame {
     padding: 0.4vh 1.2vw;
-    font-size: clamp(18px, 2vw, 26px);
+    font-size: clamp(28px, 5vw, 36px);
   }
 
   .ycy-icon {
