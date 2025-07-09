@@ -35,6 +35,7 @@ const Page4 = () => {
     const systemMsg = {
       from: 'system',
       text: dialogue.content,
+      source: dialogue.source,
       audio: Number(dialogue.id) >= 67 && Number(dialogue.id) <= 72
         ? null
         : dialogue.id
@@ -70,11 +71,17 @@ const Page4 = () => {
             )}
 
             <div className="bubble-content">
-              {msg.text && <p className="bubble-text">{msg.text}</p>}
-              {msg.audio && (
-                <audio controls src={`/audio/${msg.audio}.mp4`} className="bubble-audio" />
-              )}
-            </div>
+                  {msg.text && (
+                       <>
+                  <p className="bubble-text">{msg.text}</p>
+                      {msg.source && <p className="bubble-source">-- {msg.source}</p>}
+                    </>
+                    )}
+                {msg.audio && (
+                    <audio controls src={`/audio/${msg.audio}.mp4`} className="bubble-audio" />
+                  )}
+              </div>
+
           </div>
         ))}
         <div ref={chatEndRef} />
