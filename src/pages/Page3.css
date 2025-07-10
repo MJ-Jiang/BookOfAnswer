@@ -39,6 +39,10 @@ html {
   margin-bottom: 3vh;
   text-align: center;
 }
+.page .global-header {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
 
 .page3 .main-frame {
   width: 90vw;

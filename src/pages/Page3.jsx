@@ -2,7 +2,8 @@ import './Page3.css';
 import { useNavigate } from 'react-router-dom';
 import { useMemo, useRef,useEffect,useState } from 'react';
 import dialogues from '../assets/dialogues.json';
-import CustomAudioPlayer from '../components/CustomAudioPlayer';  
+import CustomAudioPlayer from '../components/CustomAudioPlayer'; 
+import Header from "../components/Header"; 
 const Page3 = () => {
   const navigate = useNavigate()
   const previousIndex = useRef(-1);
@@ -28,7 +29,7 @@ const Page3 = () => {
   return (
     <div className="page page3">
       {/* Background of universe */}
-      <h1 className="header pixel-font">答案之书</h1>
+      <Header />
       <div className="main-frame">
         <div className="top-frame">
           <div className="dialog-content">

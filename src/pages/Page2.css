@@ -41,6 +41,10 @@
   text-shadow: 2px 2px 0 black;
   margin: 0;
 }
+.page .global-header {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
 
 .main-frame {
   grid-row: 2 / span 3;

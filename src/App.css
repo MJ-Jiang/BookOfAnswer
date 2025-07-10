@@ -25,6 +25,15 @@ html {
   letter-spacing: 1px;
 }
 
+.global-header {
+  font-size: clamp(24px, 5vw, 32px);
+
+  color: white;
+  text-shadow: 2px 2px 0 black;
+  text-align: center;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
 
 .mode-buttons {
   position: absolute;

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import './Page2.css';
 const Page2 =() =>{
     const navigate = useNavigate();
@@ -6,7 +7,7 @@ const Page2 =() =>{
     return(
         <div className="page page2">
             <div className="page2-bg bg-animated bg-speed-slow"></div>
-            <h1 className="header pixel-font" >答案之书</h1>
+            <Header />
             <div className="main-frame pixel-font">
                 <div className="top-frame">
                     <p className="top-text">
