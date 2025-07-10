@@ -2,7 +2,7 @@ import './Page3.css';
 import { useNavigate } from 'react-router-dom';
 import { useMemo, useRef,useEffect,useState } from 'react';
 import dialogues from '../assets/dialogues.json';
-
+import CustomAudioPlayer from '../components/CustomAudioPlayer';  
 const Page3 = () => {
   const navigate = useNavigate()
   const previousIndex = useRef(-1);
@@ -10,7 +10,7 @@ const Page3 = () => {
 
   useEffect(() => {
   document.fonts.ready.then(() => {
-    setShowButtons(true);  // 字体加载完成后再显示按钮
+    setShowButtons(true);  
   });
 }, []);
 
@@ -44,8 +44,8 @@ const Page3 = () => {
 
             {!hideAudio && (
             <div className="audio-box">
-                <audio controls controlsList="nodownload" src={`/audio/${randomDialogue.id}.mp4`} />
-            </div>
+                <CustomAudioPlayer src={`/audio/${randomDialogue.id}.mp4`} />
+                </div>
             )}
           </div>
         </div>
