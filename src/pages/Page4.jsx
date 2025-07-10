@@ -25,6 +25,11 @@ const Page4 = () => {
       chatFrameRef.current.scrollTop = scrollOptions.top;
     }
   };
+useEffect(() => {
+  if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+    window.scrollTo(0, 0); // 保守保险
+  }
+}, []);
 
   // 消息更新时滚动到底部
   useEffect(() => {
@@ -35,46 +40,11 @@ const Page4 = () => {
     return () => clearTimeout(timer);
   }, [messages]);
 
-  // 增强版iOS键盘处理
-  // 替换原有的iOS键盘处理useEffect
-useEffect(() => {
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (!isIOS) return;
-
-  const handleFocus = () => {
-    document.body.classList.add('keyboard-open');
-  };
-
-  const handleBlur = () => {
-    document.body.classList.remove('keyboard-open');
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-      scrollToBottom(true);
-    }, 300);
-  };
-
-  const input = document.querySelector('.chat-input');
-  input?.addEventListener('focus', handleFocus);
-  input?.addEventListener('blur', handleBlur);
-
-  return () => {
-    input?.removeEventListener('focus', handleFocus);
-    input?.removeEventListener('blur', handleBlur);
-  };
-}, []);
-
-
-
   const handleSend = () => {
     const trimmed = input.trim();
     if (!trimmed) return;
 
-    // 处理输入框失焦
-    const activeElement = document.activeElement;
-    if (activeElement?.blur) activeElement.blur();
-    if (activeElement?.nodeName === 'INPUT') {
-      setTimeout(() => window.scrollTo(0, 0), 100);
-    }
+
 
     // 更新消息
     const userMsg = { from: 'user', text: trimmed };
@@ -92,12 +62,12 @@ useEffect(() => {
 
     setMessages([...nextMessages, systemMsg]);
     setInput('');
-    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+  
     setTimeout(() => {
       window.scrollTo(0, 0);
       scrollToBottom(true);
     }, 500);
-  }
+  
   };
 
   return (
@@ -138,6 +108,7 @@ useEffect(() => {
         <div className="input-container">
           <input
             type="text"
+            inputmode="text"
             className="chat-input"
             placeholder="请输入..."
             value={input}

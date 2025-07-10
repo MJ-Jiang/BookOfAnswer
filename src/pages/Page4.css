@@ -1,4 +1,4 @@
-/* 基础布局 */
+
 .page.page4 {
   width: 100vw;
   min-height: 100dvh;
@@ -236,7 +236,7 @@
 .chat-input {
   flex: 1;
   font-family: 'UranusPixel', monospace;
-  font-size: clamp(14px, 3.5vw, 20px);
+  font-size: clamp(16px, 3.5vw, 20px);
   border: none;
   outline: none;
   background: transparent;
@@ -259,7 +259,10 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-
+.send-button:focus {
+  outline: none;
+  box-shadow: none;
+}
 /* 修复安卓按钮点击态 */
 .send-button:active {
   transform: translateY(1px);
