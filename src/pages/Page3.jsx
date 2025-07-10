@@ -1,11 +1,19 @@
 import './Page3.css';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef,useEffect,useState } from 'react';
 import dialogues from '../assets/dialogues.json';
 
 const Page3 = () => {
   const navigate = useNavigate()
   const previousIndex = useRef(-1);
+  const [showButtons, setShowButtons] = useState(false);
+
+  useEffect(() => {
+  document.fonts.ready.then(() => {
+    setShowButtons(true);  // 字体加载完成后再显示按钮
+  });
+}, []);
+
   const randomDialogue = useMemo(() => {
     let index;
     do {
@@ -14,6 +22,7 @@ const Page3 = () => {
     previousIndex.current = index;
     return dialogues[index];
   }, []);
+
   const hideAudio =
     Number(randomDialogue.id) >= 67 && Number(randomDialogue.id) <= 72;
   return (
@@ -42,14 +51,16 @@ const Page3 = () => {
         </div>
       </div>
 
-      <div className="mode-buttons">
-        <div className="mode-button" onClick={() => navigate("/page2")}>
-          再问一次
+      {showButtons && (
+        <div className="mode-buttons">
+          <div className="mode-button" onClick={() => navigate("/page2")}>
+            再问一次
+          </div>
+          <div className="mode-button" onClick={() => navigate("/")}>
+            回到首页
+          </div>
         </div>
-        <div className="mode-button" onClick={() => navigate("/")}>
-          回到首页
-        </div>
-      </div>
+      )}
     </div>
   );
 };

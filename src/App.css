@@ -29,8 +29,11 @@ html {
 .mode-buttons {
   position: absolute;
   bottom: max(4vh, env(safe-area-inset-bottom));
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -38,6 +41,7 @@ html {
   flex-wrap: nowrap;
   gap: 4vw;
   z-index: 5;
+  max-width: 700px; 
   padding-bottom: 1vh;
 }
 

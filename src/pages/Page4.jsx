@@ -36,51 +36,34 @@ const Page4 = () => {
   }, [messages]);
 
   // 增强版iOS键盘处理
-  useEffect(() => {
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (!isIOS) return;
+  // 替换原有的iOS键盘处理useEffect
+useEffect(() => {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isIOS) return;
 
-    let originalHeight = window.innerHeight;
-    let keyboardVisible = false;
+  const handleFocus = () => {
+    document.body.classList.add('keyboard-open');
+  };
 
-    const handleFocus = () => {
-      document.body.style.height = 'auto';
-    };
+  const handleBlur = () => {
+    document.body.classList.remove('keyboard-open');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      scrollToBottom(true);
+    }, 300);
+  };
 
-    const handleBlur = () => {
-      restoreLayout();
-    };
+  const input = document.querySelector('.chat-input');
+  input?.addEventListener('focus', handleFocus);
+  input?.addEventListener('blur', handleBlur);
 
-    const handleResize = () => {
-      const newHeight = window.innerHeight;
-      const isKeyboardShowing = newHeight < originalHeight * 0.8;
-      
-      if (isKeyboardShowing && !keyboardVisible) {
-        keyboardVisible = true;
-      } else if (!isKeyboardShowing && keyboardVisible) {
-        keyboardVisible = false;
-        restoreLayout();
-      }
-    };
+  return () => {
+    input?.removeEventListener('focus', handleFocus);
+    input?.removeEventListener('blur', handleBlur);
+  };
+}, []);
 
-    const restoreLayout = () => {
-      requestAnimationFrame(() => {
-        document.body.style.height = `${originalHeight}px`;
-        window.scrollTo(0, 0);
-        setTimeout(scrollToBottom, 300);
-      });
-    };
 
-    window.addEventListener('focusin', handleFocus);
-    window.addEventListener('focusout', handleBlur);
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('focusin', handleFocus);
-      window.removeEventListener('focusout', handleBlur);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const handleSend = () => {
     const trimmed = input.trim();
@@ -109,6 +92,12 @@ const Page4 = () => {
 
     setMessages([...nextMessages, systemMsg]);
     setInput('');
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      scrollToBottom(true);
+    }, 500);
+  }
   };
 
   return (

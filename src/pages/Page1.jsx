@@ -1,9 +1,16 @@
 
+import React, { useEffect,useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Page1.css';
 
 const Page1=() =>{
     const navigate = useNavigate();
+    const [showButtons, setShowButtons] = useState(false);
+    useEffect(() => {
+    document.fonts.ready.then(() => {
+      setShowButtons(true);
+    });
+  }, []);
     return (
         <div className="page1">
             <div className="page1-bg"></div>
@@ -21,11 +28,12 @@ const Page1=() =>{
                 <img src="/images/star2.png" alt="star2" className="star star2" />
                 <img src="/images/star3.png" alt="star3" className="star star3" />
                 <img src="/images/star4.png" alt="star4" className="star star4" />
-
-                <div className="mode-buttons">
+            {showButtons && (<div className="mode-buttons">
                 <div className="mode-button" onClick={() => navigate("/page4")}>对话版</div>
                 <div className="mode-button" onClick={() => navigate("/page2")}>答案之书版</div>
             </div>
+                )}
+                
         </div>
 
     )
