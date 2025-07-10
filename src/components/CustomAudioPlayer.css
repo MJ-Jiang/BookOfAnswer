@@ -35,7 +35,7 @@
   line-height: 0;
   box-sizing: border-box;
 
-  flex-shrink: 0; /* ✅ 防止被挤变形 */
+  flex-shrink: 0; 
   flex-grow: 0;
 }
 

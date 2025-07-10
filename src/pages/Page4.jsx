@@ -2,7 +2,7 @@ import './Page4.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import dialogues from '../assets/dialogues.json';
-
+import CustomAudioPlayer from '../components/CustomAudioPlayer'; 
 const Page4 = () => {
   const navigate = useNavigate();
   const chatFrameRef = useRef(null);
@@ -122,8 +122,13 @@ useEffect(() => {
                 </>
               )}
               {msg.audio && (
-                <audio controls controlsList="nodownload" src={`/audio/${msg.audio}.mp4`} className="bubble-audio" />
+                <div className="audio-box">
+                <CustomAudioPlayer src={`/audio/${msg.audio}.mp4`} />
+                </div>
               )}
+
+
+              
             </div>
           </div>
         ))}
