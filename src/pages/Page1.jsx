@@ -28,7 +28,7 @@ const Page1=() =>{
                 <img src="/images/star2.png" alt="star2" className="star star2" />
                 <img src="/images/star3.png" alt="star3" className="star star3" />
                 <img src="/images/star4.png" alt="star4" className="star star4" />
-            {showButtons && (<div className="mode-buttons">
+            {showButtons && (<div className="mode-buttons mode-buttons--fixed">
                 <div className="mode-button" onClick={() => navigate("/page4")}>对话版</div>
                 <div className="mode-button" onClick={() => navigate("/page2")}>答案之书版</div>
             </div>

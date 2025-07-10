@@ -6,7 +6,7 @@ html {
 .page.page3 {
   width: 100vw;
   height: 100dvh;
-  overflow-x: hidden;
+
   overflow-y: auto;
   position: relative;
   display: flex;
@@ -16,7 +16,7 @@ html {
   background-size: cover;
   background-repeat: repeat;
   font-family: 'UranusPixel', monospace;
-  padding: 5vh 0 10vh;
+  padding: 5vh 0 max(4vh, env(safe-area-inset-bottom));;
   animation: moveBackground 15s linear infinite;
   padding-top: 0;
 }

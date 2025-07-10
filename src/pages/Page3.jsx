@@ -53,8 +53,8 @@ const Page3 = () => {
       </div>
 
       {showButtons && (
-        <div className="mode-buttons">
-          <div className="mode-button" onClick={() => navigate("/page2")}>
+        <div className="mode-buttons mode-buttons--flow">
+          <div className="mode-button " onClick={() => navigate("/page2")}>
             再问一次
           </div>
           <div className="mode-button" onClick={() => navigate("/")}>
