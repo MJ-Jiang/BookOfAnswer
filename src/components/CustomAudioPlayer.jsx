@@ -6,7 +6,6 @@ const CustomAudioPlayer = ({ src }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -41,13 +40,6 @@ const CustomAudioPlayer = ({ src }) => {
     }
   };
 
-  const toggleMute = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    audio.muted = !audio.muted;
-    setIsMuted(audio.muted);
-  };
 
   const handleSeek = (e) => {
     const audio = audioRef.current;
@@ -68,8 +60,14 @@ const CustomAudioPlayer = ({ src }) => {
       <audio ref={audioRef} src={src} preload="metadata" />
 
       <button className="play-button" onClick={togglePlay}>
-        {isPlaying ? '⏸️' : '▶️'}
-      </button>
+  {isPlaying ? (
+    <span className="pause-icon" />
+  ) : (
+    <span className="play-icon" />
+  )}
+</button>
+
+
 
       <div className="time-text">{formatTime(currentTime)}</div>
 
@@ -83,10 +81,6 @@ const CustomAudioPlayer = ({ src }) => {
       />
 
       <div className="time-text">{formatTime(duration)}</div>
-
-      <button className="mute-button" onClick={toggleMute}>
-        {isMuted ? '🔇' : '🔊'}
-      </button>
     </div>
   );
 };

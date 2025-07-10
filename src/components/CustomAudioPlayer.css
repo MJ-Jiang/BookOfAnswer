@@ -2,36 +2,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
   gap: 1vw;
   padding: 1vh 2vw;
   background: #f0f0f0;
-  border-radius: 24px;
+  border-radius: 40px;
   width: 100%;
   max-width: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   font-family: 'UranusPixel', monospace;
   box-sizing: border-box;
+  overflow-x: auto; /* 最终保险措施 */
+
+
 }
 
-.play-button,
-.mute-button {
-  font-size: 20px;
-  background: #fff9b0;
-  border: 2px solid #aaa;
-  border-radius: 8px;
-  padding: 0.4em 0.8em;
+.play-button {
+  width: 42px;
+  height: 42px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  background-color: #555;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 2px 0 #aaa, 0 4px 0 #888;
-  transition: transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  box-sizing: border-box;
+
+  flex-shrink: 0; /* ✅ 防止被挤变形 */
+  flex-grow: 0;
 }
 
-.play-button:active,
-.mute-button:active {
+.play-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.play-button:active {
   transform: scale(0.95);
 }
 
 .progress-bar {
   flex-grow: 1;
+  min-width: 0;
+  width: 100%;
   height: 6px;
   appearance: none;
   background: #ddd;
@@ -44,14 +64,37 @@
   appearance: none;
   width: 12px;
   height: 12px;
-  background: #393629;
+  background: #555;
   border-radius: 50%;
-  box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
 .time-text {
+  flex-shrink: 0;
   font-size: 14px;
   width: 40px;
   text-align: center;
   color: #555;
+  white-space: nowrap;
 }
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 12px solid white;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 2px; /* 稍微居中视觉 */
+}
+
+.pause-icon {
+  display: flex;
+  gap: 4px;
+}
+.pause-icon::before,
+.pause-icon::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 16px;
+  background: white;
+}
+
