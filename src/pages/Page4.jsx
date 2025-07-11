@@ -115,7 +115,7 @@ useEffect(() => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
           />
-          <button className="send-button" onClick={handleSend}>发送</button>
+          <button type="button" className="send-button" onClick={handleSend}>发送</button>
         </div>
       </div>
     </div>
