@@ -88,7 +88,7 @@
 /* 消息气泡 */
 .chat-bubble {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   max-width: 100%;
 }
 
@@ -131,6 +131,7 @@
   margin: 0;
   white-space: normal;
   text-align: left;
+  line-height: 1.5;
 }
 
 .bubble-source {
@@ -191,7 +192,7 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  padding: 0.5vh 4vw calc(1vh + env(safe-area-inset-bottom)) 4vw;
+  padding: 1.2vh 4vw calc(3vh + env(safe-area-inset-bottom)) 4vw;
   background: transparent;
   z-index: 3;
   box-sizing: border-box;

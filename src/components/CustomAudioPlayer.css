@@ -5,11 +5,10 @@
   flex-wrap: nowrap;
   gap: 1vw;
   padding: 1vh 2vw;
-  background: #f0f0f0;
+  background: #f4f0fa;
   border-radius: 40px;
   width: 100%;
   max-width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   font-family: 'UranusPixel', monospace;
   box-sizing: border-box;
   overflow-x: auto; /* 最终保险措施 */
@@ -23,7 +22,7 @@
   min-width: 36px;
   min-height: 36px;
   border-radius: 50%;
-  background-color: #555;
+  background-color: #6b5b95;
   border: none;
   cursor: pointer;
   display: flex;
@@ -54,7 +53,7 @@
   width: 100%;
   height: 6px;
   appearance: none;
-  background: #ddd;
+  background: #ffffff;
   border-radius: 3px;
   outline: none;
   cursor: pointer;
@@ -64,7 +63,7 @@
   appearance: none;
   width: 12px;
   height: 12px;
-  background: #555;
+  background: #6b5b95;
   border-radius: 50%;
 }
 
@@ -73,7 +72,7 @@
   font-size: 14px;
   width: 40px;
   text-align: center;
-  color: #555;
+  color: #6b5b95;
   white-space: nowrap;
 }
 .play-icon {
