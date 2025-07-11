@@ -191,7 +191,7 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  padding: 1.2vh 4vw calc(3vh + env(safe-area-inset-bottom)) 4vw;
+  padding: 0.5vh 4vw calc(1vh + env(safe-area-inset-bottom)) 4vw;
   background: transparent;
   z-index: 3;
   box-sizing: border-box;
