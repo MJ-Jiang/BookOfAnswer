@@ -25,10 +25,34 @@ const Page4 = () => {
       chatFrameRef.current.scrollTop = scrollOptions.top;
     }
   };
+
 useEffect(() => {
   if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
     window.scrollTo(0, 0); // 保守保险
   }
+}, []);
+useEffect(() => {
+  const chatFrame = chatFrameRef.current;
+  if (!chatFrame || !window.visualViewport) return;
+
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  if (!isIOS) return;
+
+  const updatePadding = () => {
+    const keyboardHeight = window.innerHeight - window.visualViewport.height;
+    const visiblePadding = Math.max(0, keyboardHeight || 0);
+    chatFrame.style.paddingBottom = `calc(3vh + env(safe-area-inset-bottom) + ${visiblePadding}px)`;
+  };
+
+  window.visualViewport.addEventListener("resize", updatePadding);
+  window.addEventListener("resize", updatePadding);
+  updatePadding(); // 初始执行
+
+  return () => {
+    window.visualViewport.removeEventListener("resize", updatePadding);
+    window.removeEventListener("resize", updatePadding);
+  };
 }, []);
 
   // 消息更新时滚动到底部
