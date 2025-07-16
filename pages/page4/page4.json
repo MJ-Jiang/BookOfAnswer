@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "对话",
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "custom-audio-player": "/components/custom-audio-player/index"
+  }
+}

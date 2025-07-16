@@ -1,0 +1,9 @@
+
+project.config.json
+.project.config.json
+.project.private.config.json
+node_modules/
+dist/
+.idea/
+.vscode/
+.DS_Store

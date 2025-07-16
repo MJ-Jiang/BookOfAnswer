@@ -1,0 +1,66 @@
+.custom-audio-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 2vw;
+  padding: 1vh 2vw;
+  background: #f4f0fa;
+  border-radius: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  font-family: 'UranusPixel', monospace;
+}
+
+.play-button {
+  width: 64rpx;
+  height: 64rpx;
+  background-color: #6b5b95;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 20rpx solid white;
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  margin-left: 4rpx;
+}
+
+.pause-icon {
+  display: flex;
+  gap: 6rpx;
+}
+
+.pause-icon::before,
+.pause-icon::after {
+  content: '';
+  width: 6rpx;
+  height: 28rpx;
+  background: white;
+  display: inline-block;
+}
+
+.time-text {
+  font-size: 22rpx;
+  color: #6b5b95;
+  white-space: nowrap;
+  min-width: 60rpx;
+  text-align: center;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 16rpx;
+  border-radius: 8rpx;
+  margin: 0 8rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}

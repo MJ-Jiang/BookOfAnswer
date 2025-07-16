@@ -1,0 +1,27 @@
+<view class="custom-audio-player">
+  <button class="play-button" bindtap="togglePlay">
+    <block wx:if="{{ isPlaying }}">
+      <view class="pause-icon"></view>
+    </block>
+    <block wx:else>
+      <view class="play-icon"></view>
+    </block>
+  </button>
+
+  <text class="time-text">{{ currentFormatted }}</text>
+
+  <slider
+    class="progress-bar"
+    min="0"
+    max="{{ duration }}"
+    value="{{ currentTime }}"
+    step="0.1"
+    activeColor="#6b5b95"
+    backgroundColor="#ffffff"
+    block-color="#6b5b95"
+    block-size="16"
+    bindchange="onSeek"
+  />
+
+  <text class="time-text">{{ durationFormatted }}</text>
+</view>

@@ -1,0 +1,228 @@
+page {
+  font-family: 'UranusPixel', monospace;
+}
+.page.page4 {
+  width: 100vw;
+  min-height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'UranusPixel', monospace;
+  padding-top: calc(8vh + env(safe-area-inset-top));
+  padding-bottom: calc(12vh + env(safe-area-inset-bottom));
+  background-color: transparent;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.page4-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/universe.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  animation: moveBackground 15s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
+
+/* 顶部导航栏 */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(7vh + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 4vw 0 4vw;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.back-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.chat-name {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+/* 聊天框区域 */
+.chat-frame {
+  position: fixed;
+  top: calc(7vh + env(safe-area-inset-top));
+  bottom: calc(4vh + env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding: 2vh 4vw calc(3vh + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  box-sizing: border-box;
+  z-index: 2;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 气泡区域 */
+.chat-bubble {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+  margin-bottom: 1vh;
+}
+
+.chat-bubble.left {
+  justify-content: flex-start;
+  flex-direction: row;
+  align-self: flex-start;
+  gap: 1vw;
+}
+
+.chat-bubble.right {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-self: flex-end;
+  margin-right: 4vw; 
+  gap: 1vw;
+}
+
+.bubble-avatar {
+  width: clamp(30px, 7vw, 46px);
+  height: clamp(30px, 7vw, 46px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1vw;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.bubble-content {
+  max-width: 80vw;
+  min-width: 60px;
+  padding: 0.8vh 1.8vw;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-size: 16px;
+  word-break: break-word;
+  background-color: #ffffff;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chat-bubble.right .bubble-content {
+  background-color: #d7f9d7;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.bubble-text {
+  margin: 0;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.bubble-source {
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+  margin-top: 0.5em;
+  white-space: nowrap;
+}
+
+/* 音频样式 */
+.audio-box {
+  margin-top: 1vh;
+  width: 100%;
+}
+
+.audio-box audio {
+  width: 100%;
+  border-radius: 12px;
+  background-color: white;
+  height: 48px;
+}
+
+/* 输入栏区域 */
+.input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  padding: 0.5vh 4vw calc(2vh + env(safe-area-inset-bottom));
+  background: transparent;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 0.5vh 2vw ;
+  gap: 2vw;
+  box-sizing: border-box;
+}
+
+.chat-input {
+  flex: 1;
+  min-width: 0;
+  font-family: 'UranusPixel', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  height: auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.8vh 1vw;
+  color: #333;
+}
+.chat-input::placeholder {
+  font-family: 'UranusPixel', monospace;
+  color: #999; 
+}
+.send-button {
+  background: #fdf3a1;
+  border: none;
+  font-family: 'UranusPixel', monospace;
+  font-size: 16px;
+  padding: 0.2vh 3vw;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  flex-shrink: 0;
+}

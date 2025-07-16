@@ -1,0 +1,24 @@
+<view class="page page3">
+  <view class="header pixel-font">答案之书</view>
+
+  <view class="main-frame">
+    <view class="top-frame">
+      <view class="dialog-content">
+        <text class="top-text">{{ content }}</text>
+        <view class="footer-box">
+          <text class="source-text">--{{ source }}</text>
+          <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/avatar.png" class="avatar-inline" />
+        </view>
+
+        <view wx:if="{{ showAudio }}" class="audio-box">
+          <custom-audio-player src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/audio/{{ audioId }}.m4a" controls />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{ showButtons }}" class="mode-buttons mode-buttons--flow">
+    <view class="mode-button glow" bindtap="refresh">再问一次</view>
+    <view class="mode-button glow" bindtap="goHome">回到首页</view>
+  </view>
+</view>

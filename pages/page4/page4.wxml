@@ -1,0 +1,32 @@
+<view class="page page4">
+  <view class="page4-bg"></view>
+
+  <view class="header-bar">
+    <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/back.png" class="back-icon" bindtap="goBack" />
+    <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/avatar.png" class="chat-avatar" />
+    <text class="chat-name">小羊</text>
+  </view>
+
+  <scroll-view class="chat-frame" scroll-y scroll-with-animation scroll-into-view="{{scrollTo}}">
+    <block wx:for="{{messages}}" wx:key="index">
+      <view class="chat-bubble {{item.from === 'user' ? 'right' : 'left'}}">
+        <image wx:if="{{item.from === 'system'}}" src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/avatar.png" class="bubble-avatar" />
+        <view class="bubble-content">
+          <view class="bubble-text">{{item.text}}</view>
+              <view wx:if="{{item.source}}" class="bubble-source">-- {{item.source}}</view>
+          <view wx:if="{{item.audio}}" class="audio-box">
+            <custom-audio-player src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/audio/{{item.audio}}.m4a" />
+          </view>
+        </view>
+      </view>
+    </block>
+    <view id="bottom-anchor" style="height: 1px;"></view>
+  </scroll-view>
+
+  <view class="input-bar">
+    <view class="input-container">
+      <input class="chat-input" placeholder="请输入..." value="{{input}}" bindinput="onInput" confirm-type="send" bindconfirm="onSend" />
+      <button class="send-button" bindtap="onSend">发送</button>
+    </view>
+  </view>
+</view>

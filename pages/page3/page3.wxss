@@ -1,0 +1,177 @@
+/* 字体设置 */
+page {
+  font-family: 'UranusPixel', monospace;
+}
+
+/* 页面整体样式 */
+.page.page3 {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  padding-top: calc(env(safe-area-inset-top) + 4vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/universe.png');
+  background-size: cover;
+  background-repeat: repeat;
+  animation: moveBackground 15s linear infinite;
+  font-family: 'UranusPixel', monospace;
+  padding: 5vh 0 max(4vh, env(safe-area-inset-bottom));
+}
+
+/* 背景动画 */
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
+
+/* 标题样式统一 */
+.header {
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 0 black;
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+/* 内容卡片容器 */
+.main-frame {
+  width: 90vw;
+  max-width: 700px;
+  background: #d7c4f1;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  padding: 4vh 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+/* 背景框图层 */
+.top-frame {
+  position: relative;
+  padding-left: 18vw;
+  background-image: url('https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/backgroundframe.png');
+  background-size: cover;
+  background-position: center;
+  padding: 3vh 3vw;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  color: #393629;
+  text-shadow: 1px 1px 0 white;
+  margin-bottom: 2vh;
+}
+
+/* 对话内容 */
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 对话文本 */
+.top-text {
+  font-size: 5vw;
+  line-height: 1.6;
+  text-align: left;
+  margin: 0;
+  padding-bottom: 2vh;
+}
+
+/* 作者信息 + 头像 */
+.footer-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2vw;
+  padding-top: 1vh;
+}
+
+.source-text {
+  font-size: 4vw;
+  color: #5a5240;
+  white-space: nowrap;
+}
+
+.avatar-inline {
+  width: 9vw;
+  height: 9vw;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 音频盒子 */
+.audio-box {
+  margin-top: 2vh;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.mode-buttons {
+  position: fixed;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20rpx;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 5vw;
+}
+
+.mode-button {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 10rpx 24rpx;
+  font-size: 16px;
+  color: #393629;
+  background-color: #fdf3a1;
+  border: 2rpx solid #aaa;
+  border-radius: 12rpx;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow:
+    0 4rpx 0 #aaa,
+    0 8rpx 0 #888,
+    0 12rpx 0 #666;
+  min-width: 120rpx;
+  max-width: 300rpx;
+  box-sizing: border-box;
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 4rpx 0 #aaa,
+      0 8rpx 0 #888,
+      0 12rpx 0 #666;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow:
+      0 4rpx 2rpx #fff,
+      0 8rpx 6rpx #fdf3a1;
+  }
+}
+
+.glow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}

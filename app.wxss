@@ -1,0 +1,29 @@
+/* app.wxss */ 
+page {
+  font-family: 'UranusPixel', monospace;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+view, text, image, input, button {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'UranusPixel';
+  src: url("hhttps://ycybook.oss-cn-shanghai.aliyuncs.com/public/fonts/Uranus_Pixel_11Px.ttf");
+}
+
+.page {
+  font-family: 'UranusPixel', monospace;
+}
+
+
+
+
+
+
+
+

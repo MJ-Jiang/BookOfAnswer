@@ -1,0 +1,149 @@
+/* 基础样式 */
+page {
+  font-family: 'UranusPixel', monospace;
+}
+
+.page2 {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: repeat(8, 12.5vh);
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 背景动画 */
+.page2-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/universe.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  animation: moveBackground 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
+
+/* 标题 */
+.header {
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 0 black;
+}
+
+/* 中间提示框 */
+.main-frame {
+  grid-row: 2 / span 3;
+  width: 90vw;
+  max-width: 700rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #d7c4f1;
+  border-radius: 16rpx;
+  padding: 2vh 4vw;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4rpx);
+  gap: 2vh;
+  box-sizing: border-box;
+}
+
+.top-frame {
+  flex: 1;
+  background-image: url('https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/backgroundframe.png');
+  background-size: cover;
+  background-position: center;
+  padding: 3vh 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12rpx;
+  box-shadow: 0 3rpx 10rpx rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.top-text {
+  font-size: 48rpx;
+  line-height: 1.6;
+  text-align: center;
+  color: #393629;
+  text-shadow: 1px 1px 0 white;
+}
+
+/* 底部按钮 */
+.bottom-frame {
+  grid-row: 7;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  height: 6vh;
+  padding: 0.6vh 3vw;
+  background: #fdf3a1;
+  border: 2rpx solid #aaa;
+  border-radius: 12rpx;
+  font-size: 16px;
+  color: #393629;
+  text-shadow: 1px 1px 0 white;
+  box-shadow:
+    0 2rpx 0 #aaa,
+    0 4rpx 0 #888,
+    0 6rpx 0 #666;
+  width: fit-content;
+  max-width: 65vw;
+  min-width: 140rpx;
+  transition: transform 0.1s ease;
+  position: relative;
+}
+
+.bottom-frame:active {
+  transform: translateY(-4rpx);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 4rpx 0 #aaa,
+      0 8rpx 0 #888,
+      0 12rpx 0 #666;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow:
+      0 4rpx 2rpx #fff,
+      0 8rpx 6rpx #fdf3a1;
+  }
+}
+
+.glow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+/* 图标 */
+.ycy-icon {
+  width: 66rpx;
+  height: 66rpx;
+  position: absolute;
+  top: -42rpx;   /* 上移半个自身高度 */
+  left: -6rpx;  /* 向左一点点 */
+  z-index: 2;
+  pointer-events: none;
+}
+

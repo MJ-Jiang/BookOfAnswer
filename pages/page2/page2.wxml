@@ -1,0 +1,19 @@
+<view class="page page2">
+  <view class="page2-bg bg-animated bg-speed-slow"></view>
+
+  <view class="header pixel-font">答案之书</view>
+
+  <view class="main-frame pixel-font">
+    <view class="top-frame">
+      <view class="top-text">
+      <view>心中默念你的问题，</view>
+      <view>跟随内心的引导</view>
+</view>
+    </view>
+  </view>
+
+  <view class="bottom-frame pixel-font glow" bindtap="goToPage3">
+    <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/ycy.png" class="ycy-icon" />
+    <text>超越对你说</text>
+  </view>
+</view>

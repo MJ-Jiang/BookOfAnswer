@@ -1,0 +1,16 @@
+{
+  "pages": [
+   
+    "pages/page1/page1",
+    "pages/page2/page2",
+    "pages/page3/page3",
+    "pages/page4/page4"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "答案之书",
+    "backgroundColor": "#000000",
+    "backgroundTextStyle": "light"
+  }
+}

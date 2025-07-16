@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "答案之书",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom-audio-player": "/components/custom-audio-player/index"
+  }
+}
