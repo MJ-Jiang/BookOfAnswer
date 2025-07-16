@@ -28,7 +28,6 @@
   z-index: 0;
 }
 
-/* 顶部导航栏 */
 .header-bar {
   position: fixed;
   top: 0;
@@ -63,11 +62,10 @@
   width: clamp(24px, 6vw, 36px);
   height: clamp(24px, 6vw, 36px);
   cursor: pointer;
-  user-select: none;
-  object-fit: contain;
+  user-select: none;/*Prevent users from selecting content with their mouse or finger*/
+  object-fit: contain;/*Keep the original ratio and fully display the entire image. If the ratio is different, it will be left blank.*/
 }
 
-/* 聊天消息区域 */
 .chat-frame {
   position: fixed;
   top: calc(7vh + env(safe-area-inset-top));
@@ -85,7 +83,7 @@
   scroll-behavior: smooth;
 }
 
-/* 消息气泡 */
+
 .chat-bubble {
   display: flex;
   align-items: flex-start;
@@ -155,7 +153,6 @@
   margin-right: 1vw;
 }
 
-/* 音频播放器样式 */
 .page4 .custom-audio-player {
   padding: 0.6vh 1vw;
   border-radius: 20px;
@@ -186,7 +183,6 @@
   width: 32px;
 }
 
-/* 输入栏区域 */
 .input-bar {
   position: fixed;
   bottom: 0;
@@ -226,7 +222,6 @@
   box-sizing: border-box;
 }
 
-/* ✅ 修复发送按钮在 iOS 蓝色样式问题 */
 .send-button {
   -webkit-appearance: none;
   appearance: none;
@@ -269,7 +264,6 @@
   background: #fdf3a1 !important;
 }
 
-/* iOS 修复键盘覆盖 */
 @supports (-webkit-touch-callout: none) {
   html {
     height: 100%;
@@ -299,7 +293,7 @@
   }
 }
 
-/* 响应式布局 */
+
 @media (min-width: 900px) {
   .chat-frame {
     padding: 3vh 6vw;

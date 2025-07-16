@@ -9,15 +9,14 @@ html, body, #root {
 *, *::before, *::after {
   box-sizing: inherit;
 }
-html {
-  box-sizing: border-box;
-}
+/*Make all elements and pseudo-elements use the border-box box model.*/
 
 @font-face {
   font-family: 'UranusPixel';
   src: url('/fonts/Uranus_Pixel_11Px.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap; /* Ensures text is visible while the font is loading */
 }
 .pixel-font {
   font-family: 'UranusPixel', monospace;
@@ -55,7 +54,7 @@ html {
   align-items: center;
 }
 .mode-buttons--flow {
-  margin-top: auto; /* ✅ 将按钮推到底部，前面内容不满时才生效 */
+  margin-top: auto; 
   width: 100%;
   display: flex;
   justify-content: center;
@@ -63,7 +62,6 @@ html {
   padding-bottom: max(4vh, env(safe-area-inset-bottom));
 
 }
-
 
 .mode-button {
   position: relative;

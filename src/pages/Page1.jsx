@@ -11,6 +11,7 @@ const Page1=() =>{
       setShowButtons(true);
     });
   }, []);
+  //Wait until the page fonts are loaded before continuing.
     return (
         <div className="page1">
             <div className="page1-bg"></div>
@@ -20,7 +21,7 @@ const Page1=() =>{
                     <h2>向杨而生，超越一切</h2>
                 </div>
                 <img
-                    src="/images/spaceship.png" alt="spaceship" className="spaceship" onClick={() => navigate("/page2")}
+                    src="/images/spaceship.png" alt="spaceship" className="spaceship" 
                     />
                 </div>
 

@@ -1,12 +1,7 @@
 
-html {
-  font-display: swap; 
-}
-
 .page.page3 {
   width: 100vw;
   height: 100dvh;
-
   overflow-y: auto;
   position: relative;
   display: flex;
@@ -28,20 +23,6 @@ html {
 @keyframes moveBackground {
   from { background-position: 0 0; }
   to { background-position: 100px 100px; }
-}
-
-
-.header {
-  font-size: clamp(48px, 10vw, 96px);
-  color: white;
-  text-shadow: 2px 2px 0 black;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  text-align: center;
-}
-.page .global-header {
-  margin-top: 4vh;
-  margin-bottom: 4vh;
 }
 
 .page3 .main-frame {
@@ -103,12 +84,14 @@ html {
   color: #5a5240;
   text-align: right;
   white-space: nowrap;
+ /* Text wrapping is prohibited. All content must be displayed on the same line, even if it exceeds the container width.*/
 }
 .page3 .avatar-inline {
   width: clamp(36px, 9vw, 60px);
   height: clamp(36px, 9vw, 60px);
   border-radius: 50%;
   object-fit: cover;
+  /* Maintain the aspect ratio of the media content so that it fills the entire container, even if some of the content is cropped (no distortion).*/
   border: 2px solid white;
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
@@ -116,18 +99,6 @@ html {
 .page3 .audio-box {
   margin-top: 2vh;
   width: 100%;
-  box-sizing: border-box;
-}
-.page3 .audio-box audio {
-  width: 100%;
-  min-width: 260px; 
-  max-width: 100%;
-  height: 48px;
-  background-color: #f0f0f0;
-  border-radius: 24px;
-  padding: 0;
-  padding-left: 4px;
-  padding-right: 4px;
   box-sizing: border-box;
 }
 

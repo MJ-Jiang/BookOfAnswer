@@ -6,71 +6,73 @@ import CustomAudioPlayer from '../components/CustomAudioPlayer';
 const Page4 = () => {
   const navigate = useNavigate();
   const chatFrameRef = useRef(null);
+   /*chatFrameRef is a React ref that references the .chat-frame DOM element*/
   const [messages, setMessages] = useState([{ from: 'system', text: '我在。' }]);
   const [input, setInput] = useState('');
 
-  // 增强版滚动逻辑
   const scrollToBottom = (instant = false) => {
+    /*Receives a parameter instant (the default value is false) to control whether to scroll smoothly*/
     if (!chatFrameRef.current) return;
-    
+    /*If chatFrameRef.current is null, it means it has not been loaded yet, return directly without scrolling*/
     const scrollOptions = {
-      top: chatFrameRef.current.scrollHeight,
+      top: chatFrameRef.current.scrollHeight,  /*Total height of content*/
       behavior: instant ? 'auto' : 'smooth'
+     /* 'auto' (instant scrolling) 'smooth', means smooth scrolling to the bottom*/
     };
 
-    // 优先使用scrollTo，fallback到scrollTop
     if (chatFrameRef.current.scrollTo) {
       chatFrameRef.current.scrollTo(scrollOptions);
+      /*Check if the browser supports scrollTo(options), then use the scrollTo({ top, behavior }) method to scroll to the bottom, which supports smooth effects.*/
     } else {
       chatFrameRef.current.scrollTop = scrollOptions.top;
+      /*Directly set .scrollTop to the maximum value, and instantly jump to the bottom*/
     }
   };
+//initially scroll to the top of the page when the component mounts
+  useEffect(() => {
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+     window.scrollTo(0, 0); 
+    }
+  }, []);
+ /*Force the page to scroll to the top to fix the problem of some iOS pages being offset after loading*/
+  useEffect(() => {
+    const chatFrame = chatFrameRef.current;
+    if (!chatFrame || !window.visualViewport) return;
 
-useEffect(() => {
-  if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-    window.scrollTo(0, 0); // 保守保险
-  }
-}, []);
-useEffect(() => {
-  const chatFrame = chatFrameRef.current;
-  if (!chatFrame || !window.visualViewport) return;
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
-  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    if (!isIOS) return;
 
-  if (!isIOS) return;
+    const updatePadding = () => {
+      const keyboardHeight = window.innerHeight - window.visualViewport.height;
+      const visiblePadding = Math.max(0, keyboardHeight || 0);
+      chatFrame.style.paddingBottom = `calc(3vh + env(safe-area-inset-bottom) + ${visiblePadding}px)`;
+    };
 
-  const updatePadding = () => {
-    const keyboardHeight = window.innerHeight - window.visualViewport.height;
-    const visiblePadding = Math.max(0, keyboardHeight || 0);
-    chatFrame.style.paddingBottom = `calc(3vh + env(safe-area-inset-bottom) + ${visiblePadding}px)`;
-  };
+    window.visualViewport.addEventListener("resize", updatePadding);
+    window.addEventListener("resize", updatePadding);
+    updatePadding(); // 初始执行
 
-  window.visualViewport.addEventListener("resize", updatePadding);
-  window.addEventListener("resize", updatePadding);
-  updatePadding(); // 初始执行
+    return () => {
+      window.visualViewport.removeEventListener("resize", updatePadding);
+      window.removeEventListener("resize", updatePadding);
+    };
+  }, []);
 
-  return () => {
-    window.visualViewport.removeEventListener("resize", updatePadding);
-    window.removeEventListener("resize", updatePadding);
-  };
-}, []);
-
-  // 消息更新时滚动到底部
+/*After each message is updated, scroll to the bottom twice asynchronously (one instant, one smooth) to ensure that the chat box can reliably scroll to the bottom
+ in various browsers to avoid problems such as content being blocked or incomplete scrolling.*/
   useEffect(() => {
     const timer = setTimeout(() => {
-      scrollToBottom(true); // 首次立即滚动
-      setTimeout(() => scrollToBottom(), 100); // 二次平滑滚动
+      scrollToBottom(true); 
+      setTimeout(() => scrollToBottom(), 100);  /*Delay 100 milliseconds for smooth scrolling*/
     }, 0);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer);/*Clear the last setTimeout to prevent conflicts or memory leaks caused by multiple executions*/
   }, [messages]);
 
   const handleSend = () => {
     const trimmed = input.trim();
     if (!trimmed) return;
-
-
-
-    // 更新消息
+    
     const userMsg = { from: 'user', text: trimmed };
     const nextMessages = [...messages, userMsg];
 
@@ -117,12 +119,9 @@ useEffect(() => {
               )}
               {msg.audio && (
                 <div className="audio-box">
-                <CustomAudioPlayer src={`/audio/${msg.audio}.mp4`} />
+                <CustomAudioPlayer src={`/audio/${msg.audio}.m4a`} />
                 </div>
               )}
-
-
-              
             </div>
           </div>
         ))}

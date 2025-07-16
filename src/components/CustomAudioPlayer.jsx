@@ -8,7 +8,7 @@ const CustomAudioPlayer = ({ src }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    const audio = audioRef.current;
+    const audio = audioRef.current;/*Get a DOM reference to the <audio> element*/
     if (!audio) return;
 
     const handleLoadedMetadata = () => setDuration(audio.duration || 0);
@@ -20,7 +20,7 @@ const CustomAudioPlayer = ({ src }) => {
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('play', handlePlay);
     audio.addEventListener('pause', handlePause);
-
+/*Remove listener on uninstall*/
     return () => {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('timeupdate', handleTimeUpdate);
@@ -46,6 +46,7 @@ const CustomAudioPlayer = ({ src }) => {
     if (!audio) return;
 
     const newTime = parseFloat(e.target.value);
+    /*Get the target time from the value of the progress bar (value is a string and needs to be converted to a floating point number)*/
     audio.currentTime = newTime;
   };
 
@@ -60,17 +61,11 @@ const CustomAudioPlayer = ({ src }) => {
       <audio ref={audioRef} src={src} preload="metadata" />
 
       <button className="play-button" onClick={togglePlay}>
-  {isPlaying ? (
-    <span className="pause-icon" />
-  ) : (
-    <span className="play-icon" />
-  )}
-</button>
-
-
-
+        {isPlaying ? (
+          <span className="pause-icon" />) : (<span className="play-icon" />
+        )}
+      </button>
       <div className="time-text">{formatTime(currentTime)}</div>
-
       <input
         type="range"
         className="progress-bar"

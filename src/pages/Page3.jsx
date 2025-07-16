@@ -23,29 +23,29 @@ const Page3 = () => {
     previousIndex.current = index;
     return dialogues[index];
   }, []);
+/*Remember a certain "calculation result" and recalculate it only when the dependency changes, otherwise reuse the last result.*/
+  const hideAudio = Number(randomDialogue.id) >= 67 && Number(randomDialogue.id) <= 72;
 
-  const hideAudio =
-    Number(randomDialogue.id) >= 67 && Number(randomDialogue.id) <= 72;
   return (
-    <div className="page page3">
-      {/* Background of universe */}
-      <Header />
-      <div className="main-frame">
-        <div className="top-frame">
-          <div className="dialog-content">
-              <p className="top-text">{randomDialogue.content}</p>
-              <div className="footer-box">
-                <span className="source-text">--{randomDialogue.source}</span>
-                <img
-                    src="/images/avatar.png"
-                    alt="ycy"
-                    className="avatar-inline"
-                />
-              </div>
+      <div className="page page3">
+        {/* Background of universe */}
+        <Header />
+        <div className="main-frame">
+          <div className="top-frame">
+            <div className="dialog-content">
+                <p className="top-text">{randomDialogue.content}</p>
+                <div className="footer-box">
+                  <span className="source-text">--{randomDialogue.source}</span>
+                  <img
+                      src="/images/avatar.png"
+                      alt="ycy"
+                      className="avatar-inline"
+                  />
+                </div>
 
             {!hideAudio && (
             <div className="audio-box">
-                <CustomAudioPlayer src={`/audio/${randomDialogue.id}.mp4`} />
+                <CustomAudioPlayer src={`/audio/${randomDialogue.id}.m4a`} />
                 </div>
             )}
           </div>

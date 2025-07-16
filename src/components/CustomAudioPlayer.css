@@ -11,7 +11,7 @@
   max-width: 100%;
   font-family: 'UranusPixel', monospace;
   box-sizing: border-box;
-  overflow-x: auto; /* 最终保险措施 */
+  overflow-x: auto; 
 
 
 }
@@ -81,7 +81,7 @@
   border-left: 12px solid white;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  margin-left: 2px; /* 稍微居中视觉 */
+  margin-left: 2px; 
 }
 
 .pause-icon {

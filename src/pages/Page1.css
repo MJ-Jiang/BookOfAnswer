@@ -5,7 +5,14 @@
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
+  /*
+  Hide content that exceeds the bounds of the element container. Used to prevent content from "overflowing" and causing page scroll bars or visual clutter.
+  */
   position: relative;
+   /*
+   The "original position" of relative positioning is where the element should appear on the page, and this place is usually arranged from the upper left corner.
+   If you use position: relative but don’t add top/left/right/bottom, its display position will not change.
+    */
   padding-top: 0;
   box-sizing: border-box;
 }
@@ -14,7 +21,9 @@
     padding-top: env(safe-area-inset-top);
   }
 }
-
+   /*
+If the browser supports env(safe-area-inset-top), set padding-top for the .page1 element to prevent the content from being blocked by the bangs.
+ */
 .page1-bg {
   position: fixed;
   top: 0;
@@ -47,15 +56,15 @@
 .title-box {
   grid-row: 2 / span 2;
   grid-column: 1 / -1;
+    /*
+  Make the current element span the entire row, extending from the first grid line to the end of the last grid line.
+   */
   justify-self: center;
   align-self: center;
   width: 80vw;
   max-width: 500px;
-
-
   max-height: 26vh;
   padding: 4vh 4vw;
-
   background-image: url('/images/backgroundframe.png');
   background-size: cover;
   background-position: center;
