@@ -1,5 +1,5 @@
 <view class="page page3">
-  <view class="header pixel-font">答案之书</view>
+  <view class="header">答案之书</view>
 
   <view class="main-frame">
     <view class="top-frame">
@@ -17,7 +17,7 @@
     </view>
   </view>
 
-  <view wx:if="{{ showButtons }}" class="mode-buttons mode-buttons--flow">
+  <view wx:if="{{ showButtons }}" class="mode-buttons">
     <view class="mode-button glow" bindtap="refresh">再问一次</view>
     <view class="mode-button glow" bindtap="goHome">回到首页</view>
   </view>

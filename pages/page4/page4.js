@@ -1,4 +1,4 @@
-// 引入数据模块
+
 const data = require('../../assets/dialogue-data.js');
 
 Page({
@@ -9,7 +9,6 @@ Page({
     ],
     scrollTo: ''
   },
-
   onLoad() {
     this.scrollToBottom();
   },
@@ -40,7 +39,7 @@ Page({
       messages: newMessages,
       scrollTo: 'bottom-anchor'
     }, () => {
-      // 双重滚动保证滚动到最新
+      
       setTimeout(() => this.scrollToBottom(), 50);
       setTimeout(() => this.scrollToBottom(), 500);
     });

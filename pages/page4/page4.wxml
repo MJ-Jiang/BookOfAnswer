@@ -1,6 +1,5 @@
 <view class="page page4">
   <view class="page4-bg"></view>
-
   <view class="header-bar">
     <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/back.png" class="back-icon" bindtap="goBack" />
     <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/avatar.png" class="chat-avatar" />

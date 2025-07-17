@@ -1,4 +1,4 @@
-// 引入数据模块（必须是 .js 文件）
+
 const data = require('../../assets/dialogue-data.js');
 
 Page({
@@ -13,8 +13,6 @@ Page({
 
   onLoad() {
     this.pickRandomDialogue();
-
-    // 延迟显示按钮，增强视觉节奏
     setTimeout(() => {
       this.setData({ showButtons: true });
     }, 300);
@@ -40,7 +38,6 @@ Page({
       previousIndex: index
     });
   },
-
   refresh() {
     wx.navigateBack({
       url: '/pages/page2/page2'

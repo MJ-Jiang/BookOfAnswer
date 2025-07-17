@@ -36,7 +36,6 @@ page {
   to { background-position: 100px 100px; }
 }
 
-/* 顶部导航栏 */
 .header-bar {
   position: fixed;
   top: 0;
@@ -72,7 +71,6 @@ page {
   font-weight: bold;
 }
 
-/* 聊天框区域 */
 .chat-frame {
   position: fixed;
   top: calc(7vh + env(safe-area-inset-top));
@@ -90,7 +88,6 @@ page {
   scroll-behavior: smooth;
 }
 
-/* 气泡区域 */
 .chat-bubble {
   display: flex;
   align-items: flex-start;
@@ -159,7 +156,6 @@ page {
   white-space: nowrap;
 }
 
-/* 音频样式 */
 .audio-box {
   margin-top: 1vh;
   width: 100%;
@@ -172,7 +168,6 @@ page {
   height: 48px;
 }
 
-/* 输入栏区域 */
 .input-bar {
   position: fixed;
   bottom: 0;

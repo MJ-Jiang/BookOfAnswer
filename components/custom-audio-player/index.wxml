@@ -20,6 +20,7 @@
     backgroundColor="#ffffff"
     block-color="#6b5b95"
     block-size="16"
+    bindchanging="onSliderChanging"
     bindchange="onSeek"
   />
 

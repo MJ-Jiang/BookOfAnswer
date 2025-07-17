@@ -3,10 +3,15 @@ Component({
     src: {
       type: String,
       required: true
+    },
+    estimatedDuration: {
+      type: Number,
+      value: 5 // ✅ 默认初始 duration，防止 slider 先中间跳
     }
   },
   data: {
     isPlaying: false,
+    isSeeking: false,
     currentTime: 0,
     duration: 0,
     currentFormatted: '0:00',
@@ -14,37 +19,57 @@ Component({
   },
   lifetimes: {
     attached() {
-      this.audio = wx.createInnerAudioContext();
-      this.audio.src = this.properties.src;
-      this.audio.obeyMuteSwitch = false;
+      // ✅ 提前设置估算的 duration，防止 slider 显示在中间
+      this.setData({
+        currentTime: 0,
+        currentFormatted: '0:00',
+        duration: this.properties.estimatedDuration,
+        durationFormatted: this.formatTime(this.properties.estimatedDuration)
+      });
 
-      this.audio.onCanplay(() => {
+      const audio = wx.createInnerAudioContext();
+      this.audio = audio;
+      audio.src = this.properties.src;
+      audio.obeyMuteSwitch = false;
+
+      audio.onCanplay(() => {
+        // ✅ 必须触发一次 play 才能拿到真实 duration
+        audio.play();
+        audio.pause();
+
         setTimeout(() => {
-          const dur = this.audio.duration;
+          const dur = audio.duration;
+          if (dur && dur > 0) {
+            this.setData({
+              duration: dur,
+              durationFormatted: this.formatTime(dur)
+            });
+          }
+        }, 300);
+      });
+
+      audio.onTimeUpdate(() => {
+        const cur = audio.currentTime;
+
+        if (!this.data.isSeeking) {
+          this.setData({
+            currentTime: cur,
+            currentFormatted: this.formatTime(cur)
+          });
+        }
+
+        const dur = audio.duration;
+        if (dur && dur > 0 && dur !== this.data.duration) {
           this.setData({
             duration: dur,
             durationFormatted: this.formatTime(dur)
           });
-        }, 200);
+        }
       });
 
-      this.audio.onTimeUpdate(() => {
-        const cur = this.audio.currentTime;
-        this.setData({
-          currentTime: cur,
-          currentFormatted: this.formatTime(cur)
-        });
-      });
-
-      this.audio.onPlay(() => {
-        this.setData({ isPlaying: true });
-      });
-
-      this.audio.onPause(() => {
-        this.setData({ isPlaying: false });
-      });
-
-      this.audio.onEnded(() => {
+      audio.onPlay(() => this.setData({ isPlaying: true }));
+      audio.onPause(() => this.setData({ isPlaying: false }));
+      audio.onEnded(() => {
         this.setData({
           isPlaying: false,
           currentTime: 0,
@@ -64,10 +89,18 @@ Component({
         this.audio.play();
       }
     },
+    onSliderChanging(e) {
+      this.setData({
+        isSeeking: true,
+        currentTime: e.detail.value,
+        currentFormatted: this.formatTime(e.detail.value)
+      });
+    },
     onSeek(e) {
       const value = e.detail.value;
       this.audio.seek(value);
       this.setData({
+        isSeeking: false,
         currentTime: value,
         currentFormatted: this.formatTime(value)
       });

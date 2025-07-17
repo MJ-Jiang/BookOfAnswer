@@ -57,10 +57,13 @@
 
 .progress-bar {
   flex-grow: 1;
-  height: 16rpx;
-  border-radius: 8rpx;
+  height: 32rpx;          
   margin: 0 8rpx;
-  display: flex;
-  align-items: center;
-  background-color: white;
+  position: relative;
+  top: -2rpx;
+  background-color: transparent;
+  border-radius: 8rpx;
 }
+
+
+

@@ -1,18 +1,17 @@
 <view class="page1">
   <view class="page1-bg"></view>
   <view class="grid-layout">
-    <view class="title-box pixel-font">
+    <view class="title-box">
       <view class="title">答案之书</view>
       <view class="subtitle">向杨而生，超越一切</view>
     </view>
     <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/spaceship.png" mode="widthFix" class="spaceship"/>
   </view>
-
   <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/star1.png" class="star star1" />
   <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/star2.png" class="star star2" />
   <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/star3.png" class="star star3" />
   <image src="https://ycybook.oss-cn-shanghai.aliyuncs.com/public/images/star4.png" class="star star4" />
-  <view wx:if="{{showButtons }}" class="mode-buttons .pixel-font">
+  <view wx:if="{{showButtons }}" class="mode-buttons">
     <view class="mode-button glow" bindtap="goToPage4">对话版</view>
     <view class="mode-button glow" bindtap="goToPage2">答案之书版</view>
   </view>

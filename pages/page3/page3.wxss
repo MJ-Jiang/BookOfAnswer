@@ -1,9 +1,7 @@
-/* 字体设置 */
 page {
   font-family: 'UranusPixel', monospace;
 }
 
-/* 页面整体样式 */
 .page.page3 {
   width: 100vw;
   height: 100vh;
@@ -21,13 +19,11 @@ page {
   padding: 5vh 0 max(4vh, env(safe-area-inset-bottom));
 }
 
-/* 背景动画 */
 @keyframes moveBackground {
   from { background-position: 0 0; }
   to { background-position: 100px 100px; }
 }
 
-/* 标题样式统一 */
 .header {
   grid-row: 1;
   justify-self: center;
@@ -40,7 +36,6 @@ page {
   margin-bottom: 3vh;
 }
 
-/* 内容卡片容器 */
 .main-frame {
   width: 90vw;
   max-width: 700px;
@@ -57,7 +52,6 @@ page {
   background-clip: padding-box;
 }
 
-/* 背景框图层 */
 .top-frame {
   position: relative;
   padding-left: 18vw;
@@ -72,7 +66,6 @@ page {
   margin-bottom: 2vh;
 }
 
-/* 对话内容 */
 .dialog-content {
   display: flex;
   flex-direction: column;
@@ -81,7 +74,6 @@ page {
   box-sizing: border-box;
 }
 
-/* 对话文本 */
 .top-text {
   font-size: 5vw;
   line-height: 1.6;
@@ -90,7 +82,6 @@ page {
   padding-bottom: 2vh;
 }
 
-/* 作者信息 + 头像 */
 .footer-box {
   display: flex;
   justify-content: flex-end;
@@ -112,14 +103,6 @@ page {
   object-fit: cover;
   border: 2px solid white;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
-/* 音频盒子 */
-.audio-box {
-  margin-top: 2vh;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
 }
 
 .mode-buttons {
